@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      height: 100vh;
+
+      margin: 0;
+
+    }
+
+
+
+    #buyButton {
+
+      position: relative;
+
+      padding: 10px 30px;
+
+      min-width: 150px;
+
+      font-size: 16px;
+
+      cursor: pointer;
+
+      color: white;
+
+      border: 2px solid #fff;
+
+      border-radius: 20px;
+
+      background: linear-gradient(to right, #ff8c00, #ff4500);
+
+      transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+
+    }
+
+
+
+    #buyButton:hover {
+
+      background: linear-gradient(to right, #ff69b4, #8a2be2);
+
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+      color: #fff;
+
+    }
+
+
+
+    #buyButton:active {
+
+      background: linear-gradient(to right, #8a2be2, #ff69b4);
+
+      transform: scale(0.95);
+
+    }
+
+
+
+    .success-animation {
+
+      position: absolute;
+
+      top: 50%;
+
+      left: 50%;
+
+      transform: translate(-50%, -50%) scale(0);
+
+      width: 100%;
+
+      height: 100%;
+
+      background: rgba(0, 255, 0, 0.5);
+
+      border-radius: 20px;
+
+      animation: pulse 1s ease-out forwards;
+
+      display: none;
+
+    }
+
+
+
+    @keyframes pulse {
+
+      0% {
+
+        transform: translate(-50%, -50%) scale(0);
+
+      }
+
+      50% {
+
+        transform: translate(-50%, -50%) scale(1.2);
+
+        opacity: 0.7;
+
+      }
+
+      100% {
+
+        transform: translate(-50%, -50%) scale(1);
+
+        opacity: 0;
+
+      }
+
+    }
+
+  </style>
+
+  <title>Buy Button with Animations</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+</head>
+
+<body>
+
+
+
+<button id="buyButton">Buy Now
+
+  <div class="success-animation"></div>
+
+</button>
+
+
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function () {
+
+    var buyButton = document.getElementById('buyButton');
+
+    var successAnimation = document.querySelector('.success-animation');
+
+
+
+    // JavaScript to handle button click
+
+    buyButton.addEventListener('click', function () {
+
+      // Show success animation
+
+      successAnimation.style.display = 'block';
+
+
+
+      // Hide success animation after a short delay
+
+      setTimeout(function () {
+
+        successAnimation.style.display = 'none';
+
+      }, 1000); // Hide after 1 second (adjust as needed)
+
+
+
+      // Show a styled SweetAlert2 notification
+
+      Swal.fire({
+
+        icon: 'success',
+
+        title: 'Thanks for Purchasing',
+
+        html: '<span style="color: red;">- $100</span>',
+
+        confirmButtonColor: '#8a
+
+2be2', // Customize the confirm button color
+
+      });
+
+    });
+
+  });
+
+</script>
+
+
+
+</body>
+
+</html>
